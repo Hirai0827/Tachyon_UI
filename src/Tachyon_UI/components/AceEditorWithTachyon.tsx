@@ -32,9 +32,9 @@ export const AceEditorWithTachyon:React.FC<AceEditorWithTachyonProps> = (props) 
         setRegRes(res.regRes);
     };
     return (
-        <div>
-            <div>
-                <AceEditor {...props.aceEditorProps} onChange={_ => {onChange()}} onCursorChange={_=>{onChange()}} ref={props.editorRef}/>
+        <div  style={props.aceEditorProps.style}>
+            <div style={{width:"100%",height:"100%"}}>
+                <AceEditor {...props.aceEditorProps} onChange={e => {onChange();props.aceEditorProps.onChange(e);}} onCursorChange={e=>{onChange();props.aceEditorProps.onCursorChange(e);}} ref={props.editorRef}/>
             </div>
             <PopUpWindow left={cursorX} top={cursorY} isVisible={!props.disable && focusType != "None"}>
                 <ParamEditor focusType={focusType as FocusType|string} regres={regRes} editor={props.editorRef.current} popUpEditorDict={props.popUpEditorDict}/>
