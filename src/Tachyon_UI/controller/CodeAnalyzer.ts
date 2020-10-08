@@ -19,7 +19,7 @@ export class CodeAnalyzer{
             }
             for(let j = 0; j < res.length; j++){
                 if(CodeAnalyzer.GetIsIn(res[j],pos)){
-                    console.log("new Match System:" + matchTargetList[i].name);
+                    //console.log("new Match System:" + matchTargetList[i].name);
                     return {focusType:matchTargetList[i].name,regRes:res[j]} as AnalyseResult;
                 }
             }
