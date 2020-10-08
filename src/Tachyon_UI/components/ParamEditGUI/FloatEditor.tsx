@@ -20,8 +20,10 @@ export const FloatEditor:React.FC<ParamEditorProps> = (props) => {
         const cursorPos = props.editor.editor.getCursorPosition();
         const str = props.editor.editor.session.getLine(cursorPos.row);
         const range = new Range(cursorPos.row,0,cursorPos.row,1000);
+        //console.log("replace_begin");
         const newStr = str.substring(0,props.regres.index) + t.toFixed(3) + str.substring(props.regres.index + props.regres[0].length);
         props.editor.editor.session.replace(range,newStr);
+        //console.log("replace_end");
         props.editor.editor.moveCursorTo(cursorPos.row,cursorPos.column);
 
     };
