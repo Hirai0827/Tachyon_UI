@@ -11,14 +11,17 @@ export const PopUpWindow:React.FC<PopUpWindowProp> = (props) => {
         return isVisible ? "scale(1.0,1.0)" : "scale(0.0,0.0)";
     };
     return(
-        <div style={{backgroundColor:TachyonPalette.Base,
-            borderRadius:3,
-            position:"fixed",
-            color:TachyonPalette.White,padding:5,fontWeight:"bold",
-            left:props.left,top:props.top,
-            display:props.isVisible ? "block" : "block",
-            transition:"all 0.5s",transform:getTransformProp(props.isVisible)}}>
-            {props.children}
-        </div>
+        <>
+            {props.isVisible ?
+                <div style={{backgroundColor:TachyonPalette.Base,
+                    borderRadius:3,
+                    position:"fixed",
+                    color:TachyonPalette.White,padding:5,fontWeight:"bold",
+                    left:props.left,top:props.top,
+                    display:props.isVisible ? "block" : "block",
+                    transition:"all 0.5s",transform:getTransformProp(props.isVisible)}}>
+                    {props.children}
+                </div>:<></>}
+        </>
     );
 };

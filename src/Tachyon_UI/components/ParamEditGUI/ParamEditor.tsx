@@ -22,33 +22,4 @@ export const ParamEditor:React.FC<ParamEditorProps> = (props) => {
             {props.popUpEditorDict[props.focusType]({focusType:props.focusType,regres:props.regres,editor:props.editor,popUpEditorDict:props.popUpEditorDict})}
         </>
     );
-    switch (props.focusType) {
-        case "None":
-            return(
-                <div/>
-            );
-            break;
-        case "InFloat":
-            return(
-                <FloatEditor {...props}/>
-            );
-            break;
-        case "InVec2":
-            return(
-                <Vec2Editor {...props}/>
-            )
-            break;
-        case "InVec3":
-            return (
-                <Vec3Editor {...props}/>
-            )
-            break;
-        case "InUniform":
-            console.log(props.regres);
-            return (
-                <UniformDescriptionPresenter {...props}/>
-            )
-            break;
-
-    }
 };
