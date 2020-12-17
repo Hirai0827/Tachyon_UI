@@ -6,6 +6,7 @@ import {ParamEditor} from "./ParamEditGUI/ParamEditor";
 import {FocusType} from "../Data/FocusType";
 import {TachyonRegexData} from "../Data/TachyonRegexData";
 import {PopUpEditorDict} from "../Data/PopUpEditorData";
+import {TooltipPadding} from "../Data/TooltipPadding";
 
 interface AceEditorWithTachyonProps {
     aceEditorProps:IAceEditorProps;
@@ -13,6 +14,7 @@ interface AceEditorWithTachyonProps {
     disable?:boolean;
     matchTargetArray:Array<TachyonRegexData>;
     popUpEditorDict:PopUpEditorDict;
+    tooltipPadding?:TooltipPadding;
 }
 
 
@@ -26,8 +28,8 @@ export const AceEditorWithTachyon:React.FC<AceEditorWithTachyonProps> = (props) 
         const str = props.editorRef.current.editor.session.getLine(pos.row);
         const res = CodeAnalyzer.AnalyzeCursorPos(str,pos,props.matchTargetArray);
         const pixelPos = props.editorRef.current.editor.renderer.textToScreenCoordinates(pos.row,pos.column);
-        setCursorX(pixelPos.pageX + 20);
-        setCursorY(pixelPos.pageY + 20);
+        setCursorX(pixelPos.pageX + (props.tooltipPadding ? props.tooltipPadding.left : 20));
+        setCursorY(pixelPos.pageY + (props.tooltipPadding ? props.tooltipPadding.top : 20));
         setFocusType(res.focusType);
         setRegRes(res.regRes);
     };
