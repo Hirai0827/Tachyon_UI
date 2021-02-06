@@ -7,5 +7,6 @@ export const UniformDescription = {
     good:"1.0 - time from last good button pressed(streaming only)",
     love:"1.0 - time from last good button pressed(streaming only)",
     volume:"volume of audio",
-    texture:"texture which you previous set(texture00~texture04)"
+    texture:"texture which you previous set(texture00~texture04)",
+    backbuffer:"get previous frame as sampler2D"
 };
